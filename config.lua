@@ -10,6 +10,22 @@ Config = {}
 
 Config.DefaultPrice = 10
 
+Config.Items = {
+    beverages = {
+        "coffee",
+        "ecola",
+        "ecoladiet",
+        "sprunklight",
+        "water_bottle"
+    },
+    food = {
+        "twerks_candy",
+        "snikkel_candy",
+        "crisps",
+        "nachos"
+    }
+}
+
 -- INVENTORIES 
 local invCoffee = {
     { name = "coffee", price = 10 }

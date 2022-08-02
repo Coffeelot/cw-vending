@@ -44,6 +44,8 @@ Copy one of the existing Machine objects (`sodaMachines` for example), add the p
 ```
 
 ## qb-smallresources/config.lua
+
+Any items you add in `Config.Items` will automatically become eat/drinkable, but to make these actually remove hunger/thirst you need to add this also.
 Add these into their respective list if you want the default items (some of these you might already have)
 ```
 ConsumeablesEat = {
