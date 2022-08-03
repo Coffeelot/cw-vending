@@ -6,19 +6,23 @@ CreateThread(function()
         
         local options = {}
         for j, item in pairs(machineType.inventory) do
-            local price = Config.DefaultPrice
-            if item.price then
-                price = item.price
-            end
-            options[#options+1] = {
-                type = 'client',
-                icon = "fas fa-cash-register",
-                label = QBCore.Shared.Items[item.name].label.. ' $' ..price,
-                event = 'cw-vending-machines:client:buy',
-                params = {
-                    item = item
+            if QBCore.Shared.Items[item.name] then
+                local price = Config.DefaultPrice
+                if item.price then
+                    price = item.price
+                end
+                options[#options+1] = {
+                    type = 'client',
+                    icon = "fas fa-cash-register",
+                    label = QBCore.Shared.Items[item.name].label.. ' $' ..price,
+                    event = 'cw-vending-machines:client:buy',
+                    params = {
+                        item = item
+                    }
                 }
-            }
+            else
+                print(item.name.. " seems to be missing from your items.lua")
+            end
         end
         exports['qb-target']:AddTargetModel(machineType.props, {
             options = options,
