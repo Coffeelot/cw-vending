@@ -29,11 +29,11 @@ end)
 
 RegisterNetEvent('cw-vending-machines:client:buy', function(data)
     local item = data.params.item
+    TriggerEvent('animations:client:EmoteCommandStart', {"id"})
     TriggerServerEvent('cw-vending-machines:server:attemptPurchase', item) 
 end)
 
 RegisterNetEvent('cw-vending-machines:client:success', function(item)
-    TriggerEvent('animations:client:EmoteCommandStart', {"atm"})
     QBCore.Functions.Notify('You bought a '..QBCore.Shared.Items[item.name].label, 'success')
 end)
 
