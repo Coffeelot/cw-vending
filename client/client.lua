@@ -33,7 +33,7 @@ end)
 
 RegisterNetEvent('cw-vending-machines:client:buy', function(data)
     local item = data.params.item
-    TriggerEvent('animations:client:EmoteCommandStart', {"id"})
+    TriggerEvent('animations:client:EmoteCommandStart', {"dispenser"})
     TriggerServerEvent('cw-vending-machines:server:attemptPurchase', item) 
 end)
 
