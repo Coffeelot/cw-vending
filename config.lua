@@ -80,3 +80,15 @@ Config.VendingMachines = {
     coffeeMachines,
     snackMachines,
 }
+
+Config.CallChance = 50
+
+Config.CashAmount = {
+    min = 10,
+    max = 100
+}
+
+Config.Lockpicks = {
+    'lockpick',
+    'advancedlockpick'
+}
