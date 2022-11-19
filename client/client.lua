@@ -15,16 +15,18 @@ CreateThread(function()
     for i,machineType in pairs(Config.VendingMachines) do
         
         local options = {}
-        options[1] = {
-            type = 'client',
-            icon = "fas fa-unlock",
-            label = "Lockpick",
-            event = 'cw-vending-machines:client:lockpick',
-            params = {
-                machineInventory = machineType.inventory
-            },
-            canInteract = function() return hasLockpick() end
-        }
+        if Config.AllowTheft then
+            options[1] = {
+                type = 'client',
+                icon = "fas fa-unlock",
+                label = "Lockpick",
+                event = 'cw-vending-machines:client:lockpick',
+                params = {
+                    machineInventory = machineType.inventory
+                },
+                canInteract = function() return hasLockpick() end
+            }
+        end
 
         for j, item in pairs(machineType.inventory) do
             if QBCore.Shared.Items[item.name] then

@@ -88,6 +88,8 @@ Config.CashAmount = {
     max = 100
 }
 
+Config.AllowTheft = true
+
 Config.Lockpicks = {
     'lockpick',
     'advancedlockpick'
