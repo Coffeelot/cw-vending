@@ -74,6 +74,19 @@ local snackMachines = {
     inventory = invSnack
 }
 
+-- USE THESE FOR WHEN YOU WANT TO ADD VENDING INTERACTIONS TO VENDING MACHINES THAT ARE PART OF MLOS FOR EXAMPLE
+Config.UseVendingInteractionLocations = true
+Config.VendingInteractionLocations = {
+    {
+        coords = vector3(950.61, -1555.02, 30.15), -- For pitstop garage https://forum.cfx.re/t/mlo-pitstop-garage-workshop/5010548?u=markz
+        inventory = invSnack
+    },
+    {
+        coords = vector3(961.91, -1554.02, 33.13), -- For pitstop garage https://forum.cfx.re/t/mlo-pitstop-garage-workshop/5010548?u=markz
+        inventory = invSnack
+    }
+}
+
 Config.VendingMachines = {
     sodaMachines,
     waterMachines,

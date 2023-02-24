@@ -2,7 +2,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 
 local function hasLockpick() 
     for k, pick in ipairs(Config.Lockpicks) do
-        print(pick)
+        --print(pick)
         if QBCore.Functions.HasItem(pick) then
             return true
         end
@@ -52,6 +52,48 @@ CreateThread(function()
             options = options,
             distance = 2.0
         })
+    end
+
+    if Config.UseVendingInteractionLocations then
+        for i, machine in pairs(Config.VendingInteractionLocations) do
+            local options = {}
+            for j, item in pairs(machine.inventory) do
+                if QBCore.Shared.Items[item.name] then
+                    local price = Config.DefaultPrice
+                    if item.price then
+                        price = item.price
+                    end
+                    options[#options+1] = {
+                        type = 'client',
+                        icon = "fas fa-cash-register",
+                        label = QBCore.Shared.Items[item.name].label.. ' $' ..price,
+                        event = 'cw-vending-machines:client:buy',
+                        params = {
+                            item = item
+                        }
+                    }
+                else
+                    print(item.name.. " seems to be missing from your items.lua")
+                end
+            end
+            exports['qb-target']:AddBoxZone(
+                "cw-vending-machine-"..i,
+                machine.coords,
+                2.0,
+                2.0,
+                {
+                    name = 'vending-machine-interaction',
+                    heading = 0,
+                    debugPoly = false,
+                    minZ = machine.coords.z - 1.7,
+                    maxZ = machine.coords.z + 1.7,
+                },
+                {
+                    options = options,
+                    distance = 2.0
+                }
+            )
+        end
     end
 end)
 
